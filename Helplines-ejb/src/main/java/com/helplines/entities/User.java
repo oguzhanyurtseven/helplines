@@ -68,7 +68,7 @@ public class User implements Serializable {
 
 	@NotNull
 	@Length(max = 1, min = 1)
-	@Column(name = "EXPERIANCE", length = 1)
+	@Column(name = "EXPERIENCE", length = 1)
 	private Character programmingExperience;
 
 	@Column(name = "ISACTIVE")
@@ -76,6 +76,9 @@ public class User implements Serializable {
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<UserRole> userRoles = new ArrayList<UserRole>();
+	
+	@OneToMany(mappedBy="expert" ,cascade= CascadeType.ALL)
+	private List<ExpertRequest> expertRequests = new ArrayList<ExpertRequest>();
 
 	@Valid
 	@Embedded
@@ -83,6 +86,14 @@ public class User implements Serializable {
 
 	public Long getId() {
 		return id;
+	}
+
+	public List<ExpertRequest> getExpertRequests() {
+		return expertRequests;
+	}
+
+	public void setExpertRequests(List<ExpertRequest> expertRequests) {
+		this.expertRequests = expertRequests;
 	}
 
 	public void setId(Long id) {
