@@ -16,7 +16,7 @@ public class Base {
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date createDate;
 
-	@Column(name = "CREATE_DATE")
+	@Column(name = "UPDATE_DATE")
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date updateDate;
 
@@ -24,7 +24,7 @@ public class Base {
 	@Length(max = 10)
 	private String createUser;
 
-	@Column(name = "CREATE_USER", length = 10)
+	@Column(name = "UPDATE_USER", length = 10)
 	@Length(max = 10)
 	private String updateUser;
 
