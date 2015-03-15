@@ -18,7 +18,7 @@ import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "EXPERT_REQUEST")
-public class ExpertRequest implements Serializable {
+public class ExpertRequest extends AuditBase implements Serializable {
 
 	/**
 	 * 
