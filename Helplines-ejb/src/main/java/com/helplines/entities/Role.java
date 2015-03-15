@@ -30,15 +30,15 @@ public class Role implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "NAME", nullable = false, length = 10)
 	@NotNull
 	@Length(max = 10, min = 1)
+	@Column(name = "NAME", nullable = false, length = 10)
 	private String name;
 
 	@Column(name = "INFO")
 	private String info;
 
-	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<RolePermission> rolePermissions = new ArrayList<RolePermission>();
 
 	public Long getId() {

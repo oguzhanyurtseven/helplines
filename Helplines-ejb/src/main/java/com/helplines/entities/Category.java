@@ -3,13 +3,13 @@ package com.helplines.entities;
 public enum Category {
 
 	none,
-	Java,
+	Java_JavaEE,
 	JavaScript,
 	HTML,
-	Ruby,
-	Python,
+	Ruby_Rails,
+	Python_Django,
 	PHP,
-	ObjectiveC,
+	Objective_C,
 	dotNet,
 	Go,
 	C,

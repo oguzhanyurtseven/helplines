@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "EXPERTS")
-public class Expert extends User implements Serializable {
+public class Expert extends UserBase implements Serializable {
 
 	/**
 	 * 
@@ -45,6 +45,9 @@ public class Expert extends User implements Serializable {
 	@Email
 	@Column(name = "PAYPAL")
 	private String paypalMail;
+
+	@OneToMany(mappedBy = "expert", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ExpertRequest> expertRequests = new ArrayList<ExpertRequest>();
 
 	public String getGoogleMail() {
 		return googleMail;
@@ -102,7 +105,4 @@ public class Expert extends User implements Serializable {
 		this.expertRequests = expertRequests;
 	}
 
-	@OneToMany(mappedBy="expert" ,cascade= CascadeType.ALL)
-	private List<ExpertRequest> expertRequests = new ArrayList<ExpertRequest>();
-	
 }

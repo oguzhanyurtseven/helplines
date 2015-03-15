@@ -13,28 +13,28 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name="ROLE_PERMISSIONS")
-public class RolePermission implements Serializable{
+@Table(name = "ROLE_PERMISSIONS")
+public class RolePermission implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	@Column(name="ID")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@ManyToOne
-	@JoinColumn(name="ROLE_ID")
+	@JoinColumn(name = "ROLE_ID")
 	private Role role;
-	
-	@Column(name="TARGET", nullable=false, length=40)
+
 	@NotNull
+	@Column(name = "TARGET", nullable = false, length = 40)
 	private String target;
-	
-	@Column(name="ACTION")
+
+	@Column(name = "ACTION")
 	@NotNull
 	private String action;
 
@@ -69,6 +69,5 @@ public class RolePermission implements Serializable{
 	public void setAction(String action) {
 		this.action = action;
 	}
-	
 
 }

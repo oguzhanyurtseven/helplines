@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,7 +18,7 @@ import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "EXPERT_REQUEST")
-public class ExpertRequest extends Base implements Serializable {
+public class ExpertRequest implements Serializable {
 
 	/**
 	 * 
@@ -25,18 +27,19 @@ public class ExpertRequest extends Base implements Serializable {
 
 	@Id
 	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Enumerated(EnumType.ORDINAL)
 	@Column(name = "CATEGORY")
 	private Category category = Category.none;
 
-	@Column(name = "TITLE", length = 10)
 	@NotNull
+	@Column(name = "TITLE", length = 10)
 	private String reqTitle;
 
 	@NotNull
-	@Column(name = "DESC", length = 500)
+	@Column(name = "DESCRIPTION", length = 500)
 	@Length(max = 500)
 	private String description;
 

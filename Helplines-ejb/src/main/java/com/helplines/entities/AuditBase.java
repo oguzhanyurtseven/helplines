@@ -10,7 +10,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.validator.constraints.Length;
 
 @MappedSuperclass
-public class Base {
+public class AuditBase {
 
 	@Column(name = "CREATE_DATE")
 	@Temporal(value = TemporalType.TIMESTAMP)
