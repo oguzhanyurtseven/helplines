@@ -103,6 +103,12 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>com.paypal.sdk</groupId>
+			<artifactId>rest-api-sdk</artifactId>
+			<version>0.5.2</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
