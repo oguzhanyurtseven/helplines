@@ -19,29 +19,25 @@
 	</properties>
 
 	<dependencies>
-		<!-- project modules -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>Helplines-war</artifactId>
-			<version>${project.version}</version>
 			<type>war</type>
 		</dependency>
 
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>Helplines-ejb</artifactId>
-			<version>${project.version}</version>
 			<type>ejb</type>
 		</dependency>
 	</dependencies>
 
 	<build>
-		<finalName>Helplines</finalName>
+		<finalName>${project.parent.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>properties-maven-plugin</artifactId>
-				<version>1.0-alpha-2</version>
 				<executions>
 					<execution>
 						<configuration>
@@ -52,17 +48,18 @@
 					</execution>
 				</executions>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-ear-plugin</artifactId>
-				<version>2.6</version>
+				<version>${version.ear.plugin}</version>
 				<configuration>
-					<unpackTypes>ejb,war</unpackTypes>
 					<defaultLibBundleDir>lib</defaultLibBundleDir>
+					<fileNameMapping>no-version</fileNameMapping>
+					<unpackTypes>ejb,war</unpackTypes>
 					<filtering>true</filtering>
 					<initializeInOrder>true</initializeInOrder>
 					<modules>
-
 						<ejbModule>
 							<groupId>${project.groupId}</groupId>
 							<artifactId>Helplines-ejb</artifactId>
@@ -72,10 +69,9 @@
 						<webModule>
 							<groupId>${project.groupId}</groupId>
 							<artifactId>Helplines-war</artifactId>
-							<contextRoot>/Helplines</contextRoot>
+							<contextRoot>/helplines</contextRoot>
 							<bundleFileName>Helplines-war.war</bundleFileName>
 						</webModule>
-
 					</modules>
 					<archive>
 						<manifestEntries>
@@ -86,47 +82,15 @@
 					</archive>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<configuration>
+					<skip>false</skip>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-	<profiles>
-		<profile>
-			<id>deploy</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.wildfly.plugins</groupId>
-						<artifactId>wildfly-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>deploy</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>undeploy</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.wildfly.plugins</groupId>
-						<artifactId>wildfly-maven-plugin</artifactId>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>undeploy</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>
  
