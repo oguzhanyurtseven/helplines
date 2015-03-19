@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>com.helplines</groupId>
 	<artifactId>Helplines</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -16,6 +17,63 @@
 		<module>Helplines-ear</module>
 	</modules>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
+
+		<version.properties-maven-plugin>1.0-alpha-2</version.properties-maven-plugin>
+
+		<version.maven-dependency-plugin>2.10</version.maven-dependency-plugin>
+
+		<version.maven-compiler-plugin>3.1</version.maven-compiler-plugin>
+
+		<version.maven-javadoc-plugin>2.10.1</version.maven-javadoc-plugin>
+
+		<version.maven-source-plugin>2.4</version.maven-source-plugin>
+
+		<version.maven-shade-plugin>2.3</version.maven-shade-plugin>
+
+		<version.wildfly.bom>8.2.0.Final</version.wildfly.bom>
+
+		<version.ear.plugin>2.6</version.ear.plugin>
+		<version.ejb.plugin>2.5</version.ejb.plugin>
+		<version.surefire.plugin>2.18.1</version.surefire.plugin>
+		<version.war.plugin>2.6</version.war.plugin>
+
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>Helplines-ejb</artifactId>
+				<version>${project.version}</version>
+				<type>ejb</type>
+			</dependency>
+
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>Helplines-war</artifactId>
+				<version>${project.version}</version>
+				<type>war</type>
+				<scope>compile</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.wildfly.bom</groupId>
+				<artifactId>jboss-javaee-7.0-with-all</artifactId>
+				<version>${version.wildfly.bom}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
 	<build>
 		<resources>
 			<resource>
@@ -23,22 +81,34 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>properties-maven-plugin</artifactId>
+					<version>${version.properties-maven-plugin}</version>
+					<executions>
+						<execution>
+							<configuration>
+								<files>
+									<file>${basedir}/../src/main/filters/filter-${env}.properties</file>
+								</files>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>properties-maven-plugin</artifactId>
-				<version>1.0-alpha-2</version>
-				<executions>
-					<execution>
-						<configuration>
-							<files>
-								<file>${basedir}/../src/main/filters/filter-${env}.properties</file>
-							</files>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
+				<plugin>
+					<groupId>org.wildfly.plugins</groupId>
+					<artifactId>wildfly-maven-plugin</artifactId>
+					<version>${version.wildfly.maven.plugin}</version>
+					<inherited>true</inherited>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
-</project> 
+
+</project>

@@ -1,19 +1,10 @@
 package com.helplines.util;
 
-import java.io.Serializable;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import javax.ejb.Stateless;
-
-@Stateless
-public class HashingBean implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class HashingBean {
 
 	public String Hashing(String password) {
 		try {

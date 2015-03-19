@@ -7,8 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 public class Resources {
+
 	@Produces
-	@PersistenceContext(unitName = "primary")
+	@PersistenceContext
 	private EntityManager entityManager;
 
 	@Produces
