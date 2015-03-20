@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
-@Table(name = "EXPERT_REQUEST")
+@Table(name = "EXPERT_REQUESTS")
 public class ExpertRequest extends AuditBase implements Serializable {
 
 	/**

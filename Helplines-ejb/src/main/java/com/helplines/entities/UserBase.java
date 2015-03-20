@@ -1,9 +1,5 @@
 package com.helplines.entities;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.EnumType;
@@ -12,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -71,103 +66,92 @@ public class UserBase {
 	@Column(name = "CREDIT")
 	private Credit credit = new Credit();
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<CreditCard> creditCards = new ArrayList<CreditCard>();
-
 	public Long getId() {
 		return id;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public String getFullName() {
-		return fullName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public Long getPassword() {
-		return password;
-	}
-
-	public String getCompany() {
-		return company;
-	}
-
-	public CompanyType getCompanyType() {
-		return companyType;
-	}
-
-	public String getInterestOfLanguages() {
-		return interestOfLanguages;
-	}
-
-	public Character getProgrammingExperience() {
-		return programmingExperience;
-	}
-
-	public Boolean getActive() {
-		return active;
-	}
-
-	public Credit getCredit() {
-		return credit;
-	}
-
-	public List<CreditCard> getCreditCards() {
-		return creditCards;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public String getFullName() {
+		return fullName;
 	}
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Long getPassword() {
+		return password;
 	}
 
 	public void setPassword(Long password) {
 		this.password = password;
 	}
 
+	public String getCompany() {
+		return company;
+	}
+
 	public void setCompany(String company) {
 		this.company = company;
+	}
+
+	public CompanyType getCompanyType() {
+		return companyType;
 	}
 
 	public void setCompanyType(CompanyType companyType) {
 		this.companyType = companyType;
 	}
 
+	public String getInterestOfLanguages() {
+		return interestOfLanguages;
+	}
+
 	public void setInterestOfLanguages(String interestOfLanguages) {
 		this.interestOfLanguages = interestOfLanguages;
+	}
+
+	public Character getProgrammingExperience() {
+		return programmingExperience;
 	}
 
 	public void setProgrammingExperience(Character programmingExperience) {
 		this.programmingExperience = programmingExperience;
 	}
 
+	public Boolean getActive() {
+		return active;
+	}
+
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
 
-	public void setCredit(Credit credit) {
-		this.credit = credit;
+	public Credit getCredit() {
+		return credit;
 	}
 
-	public void setCreditCards(List<CreditCard> creditCards) {
-		this.creditCards = creditCards;
+	public void setCredit(Credit credit) {
+		this.credit = credit;
 	}
 
 }
