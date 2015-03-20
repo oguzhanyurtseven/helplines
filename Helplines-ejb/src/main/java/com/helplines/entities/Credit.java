@@ -16,35 +16,35 @@ public class Credit implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private BigDecimal value;
+	private BigDecimal credit;
 
 	public Credit() {
-		value = BigDecimal.ZERO;
+		credit = BigDecimal.ZERO;
 	}
 
-	public Credit(Credit credit) {
-		this.value = credit.getValue();
+	public Credit(Credit value) {
+		this.credit = value.getCredit();
 	}
 
 	public Credit(BigDecimal value) {
-		this.value = value;
+		this.credit = value;
 	}
 
 	public void clearCredit() {
-		this.value = BigDecimal.ZERO;
+		this.credit = BigDecimal.ZERO;
 	}
 
-	@Column(name = "VAL", precision = 19, scale = 2)
-	public BigDecimal getValue() {
-		return value;
+	@Column(name = "CREDIT", precision = 19, scale = 2)
+	public BigDecimal getCredit() {
+		return credit;
 	}
 
 	public void setValue(BigDecimal value) {
-		this.value = value;
+		this.credit = value;
 	}
 
-	public void add(Credit credit) {
-		value = value.add(credit.getValue());
+	public void add(Credit value) {
+		credit = credit.add(value.getCredit());
 	}
 
 }
