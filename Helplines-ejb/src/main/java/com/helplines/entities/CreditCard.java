@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,8 +15,8 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
-@Table(name = "EXPERT_REQUESTS")
-public class ExpertRequest extends AuditBase implements Serializable {
+@Table(name = "CREDIT_CARDS")
+public class CreditCard extends AuditBase implements Serializable {
 
 	/**
 	 * 
@@ -30,17 +28,12 @@ public class ExpertRequest extends AuditBase implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Enumerated(EnumType.ORDINAL)
-	@Column(name = "CATEGORY")
-	private Category category = Category.none;
-
 	@NotNull
-	@Column(name = "TITLE", length = 10)
-	private String reqTitle;
+	@Column(name = "PAYPAL_ID", nullable = false, unique = true)
+	private String paypalID;
 
-	@NotNull
-	@Column(name = "DESCRIPTION", length = 500)
-	@Length(max = 500)
+	@Length(max = 100)
+	@Column(name = "DESCRIPTION", length = 100)
 	private String description;
 
 	@ManyToOne
@@ -59,20 +52,12 @@ public class ExpertRequest extends AuditBase implements Serializable {
 		this.id = id;
 	}
 
-	public Category getCategory() {
-		return category;
+	public String getPaypalID() {
+		return paypalID;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	public String getReqTitle() {
-		return reqTitle;
-	}
-
-	public void setReqTitle(String reqTitle) {
-		this.reqTitle = reqTitle;
+	public void setPaypalID(String paypalID) {
+		this.paypalID = paypalID;
 	}
 
 	public String getDescription() {

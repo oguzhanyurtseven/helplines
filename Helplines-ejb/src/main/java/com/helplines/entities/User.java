@@ -24,6 +24,9 @@ public class User extends UserBase implements Serializable {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ExpertRequest> expertRequests = new ArrayList<ExpertRequest>();
 
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<CreditCard> creditCards = new ArrayList<CreditCard>();
+
 	public List<UserRole> getUserRoles() {
 		return userRoles;
 	}
@@ -38,6 +41,14 @@ public class User extends UserBase implements Serializable {
 
 	public void setExpertRequests(List<ExpertRequest> expertRequests) {
 		this.expertRequests = expertRequests;
+	}
+
+	public List<CreditCard> getCreditCards() {
+		return creditCards;
+	}
+
+	public void setCreditCards(List<CreditCard> creditCards) {
+		this.creditCards = creditCards;
 	}
 
 }

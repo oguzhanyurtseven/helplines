@@ -63,6 +63,7 @@ public class UserBase {
 
 	@Valid
 	@Embedded
+	@Column(name = "CREDIT")
 	private Credit credit = new Credit();
 
 	public Long getId() {

@@ -5,6 +5,13 @@
 	version="2.1">
 	<persistence-unit name="primary">
 		<jta-data-source>java:jboss/datasources/PostgreSQLDS</jta-data-source>
+		<class>com.helplines.entities.CreditCard</class>
+		<class>com.helplines.entities.Expert</class>
+		<class>com.helplines.entities.ExpertRequest</class>
+		<class>com.helplines.entities.Role</class>
+		<class>com.helplines.entities.RolePermission</class>
+		<class>com.helplines.entities.User</class>
+		<class>com.helplines.entities.UserRole</class>
 		<properties>
 			<!-- Properties for Hibernate -->
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
