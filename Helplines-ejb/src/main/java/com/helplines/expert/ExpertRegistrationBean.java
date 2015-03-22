@@ -1,4 +1,4 @@
-package com.helplines.user;
+package com.helplines.expert;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateful;
@@ -9,44 +9,45 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 
-import com.helplines.entities.User;
+import com.helplines.entities.Expert;
 
 @Model
 @Stateful
-public class UserRegistrationBean {
+public class ExpertRegistrationBean {
 
 	@Inject
 	private EntityManager entityManager;
 
 	@Inject
-	private Event<User> userEvent;
+	private Event<Expert> expertEvent;
 
-	private User user;
+	private Expert expert;
 
 	@Named
 	@Produces
-	public User getUser() {
-		return user;
+	public Expert getExpert() {
+		return expert;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setExpert(Expert expert) {
+		this.expert = expert;
 	}
 
-	private void registerUser() {
+	private void registerExpert() {
 		try {
-			entityManager.persist(user);
-			userEvent.fire(user);
-			initNewUser();
+			entityManager.persist(expert);
+			expertEvent.fire(expert);
+			initNewExpert();
 
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+
 	}
 
 	@PostConstruct
-	public void initNewUser() {
-		user = new User();
+	private void initNewExpert() {
+		expert = new Expert();
 	}
 
 }
