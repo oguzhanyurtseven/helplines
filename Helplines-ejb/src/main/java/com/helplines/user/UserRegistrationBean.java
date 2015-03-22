@@ -33,7 +33,7 @@ public class UserRegistrationBean {
 		this.user = user;
 	}
 
-	private void registerUser() {
+	public void registerUser() {
 		try {
 			entityManager.persist(user);
 			userEvent.fire(user);
