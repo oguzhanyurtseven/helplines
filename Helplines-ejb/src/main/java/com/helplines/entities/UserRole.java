@@ -30,6 +30,10 @@ public class UserRole implements Serializable {
 	private User user;
 
 	@ManyToOne
+	@JoinColumn(name = "EXPERT_ID")
+	private Expert expert;
+
+	@ManyToOne
 	@JoinColumn(name = "ROLE_ID")
 	private Role role;
 
@@ -47,6 +51,14 @@ public class UserRole implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Expert getExpert() {
+		return expert;
+	}
+
+	public void setExpert(Expert expert) {
+		this.expert = expert;
 	}
 
 	public Role getRole() {

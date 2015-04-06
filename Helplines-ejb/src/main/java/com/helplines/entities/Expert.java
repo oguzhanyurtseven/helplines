@@ -31,7 +31,7 @@ public class Expert extends UserBase implements Serializable {
 	private String linkedin;
 
 	@Length(max = 200)
-	@Column(name = "SO_FLOW", length = 200)
+	@Column(name = "SOFLOW", length = 200)
 	private String stackOverFlow;
 
 	@Length(max = 200)
@@ -45,6 +45,9 @@ public class Expert extends UserBase implements Serializable {
 	@Email
 	@Column(name = "PAYPAL")
 	private String paypalMail;
+
+	@OneToMany(mappedBy = "expert", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<UserRole> userRoles = new ArrayList<UserRole>();
 
 	@OneToMany(mappedBy = "expert", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ExpertRequest> expertRequests = new ArrayList<ExpertRequest>();
@@ -98,6 +101,14 @@ public class Expert extends UserBase implements Serializable {
 
 	public void setPaypalMail(String paypalMail) {
 		this.paypalMail = paypalMail;
+	}
+
+	public List<UserRole> getUserRoles() {
+		return userRoles;
+	}
+
+	public void setUserRoles(List<UserRole> userRoles) {
+		this.userRoles = userRoles;
 	}
 
 	public List<ExpertRequest> getExpertRequests() {

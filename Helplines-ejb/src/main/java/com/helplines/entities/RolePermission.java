@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "ROLE_PERMISSIONS")
@@ -30,14 +29,6 @@ public class RolePermission implements Serializable {
 	@JoinColumn(name = "ROLE_ID")
 	private Role role;
 
-	@NotNull
-	@Column(name = "TARGET", nullable = false, length = 40)
-	private String target;
-
-	@Column(name = "ACTION")
-	@NotNull
-	private String action;
-
 	public Long getId() {
 		return id;
 	}
@@ -52,22 +43,6 @@ public class RolePermission implements Serializable {
 
 	public void setRole(Role role) {
 		this.role = role;
-	}
-
-	public String getTarget() {
-		return target;
-	}
-
-	public void setTarget(String target) {
-		this.target = target;
-	}
-
-	public String getAction() {
-		return action;
-	}
-
-	public void setAction(String action) {
-		this.action = action;
 	}
 
 }
