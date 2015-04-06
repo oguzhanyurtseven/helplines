@@ -33,7 +33,7 @@ public class ExpertRequestRegistrationBean {
 		this.expertRequest = expertRequest;
 	}
 
-	private void registerExpertRequest() {
+	public void registerExpertRequest() {
 		try {
 			entityManager.persist(expertRequest);
 			expertRequestEvent.fire(expertRequest);
@@ -46,7 +46,7 @@ public class ExpertRequestRegistrationBean {
 	}
 
 	@PostConstruct
-	private void initNewExpert() {
+	public void initNewExpert() {
 		expertRequest = new Expert();
 	}
 

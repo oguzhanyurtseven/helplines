@@ -2,11 +2,11 @@ package com.helplines.user;
 
 public class UserUpdateBean {
 
-	private void deleteUser() {
+	public void deleteUser() {
 
 	}
 
-	private void updateUser() {
+	public void updateUser() {
 
 	}
 }
