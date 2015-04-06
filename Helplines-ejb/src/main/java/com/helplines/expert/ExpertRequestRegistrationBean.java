@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 
-import com.helplines.entities.Expert;
+import com.helplines.entities.ExpertRequest;
 
 @Model
 @Stateful
@@ -19,17 +19,17 @@ public class ExpertRequestRegistrationBean {
 	private EntityManager entityManager;
 
 	@Inject
-	private Event<Expert> expertRequestEvent;
+	private Event<ExpertRequest> expertRequestEvent;
 
-	private Expert expertRequest;
+	private ExpertRequest expertRequest;
 
 	@Named
 	@Produces
-	public Expert getExpertRequest() {
+	public ExpertRequest getExpertRequest() {
 		return expertRequest;
 	}
 
-	public void setExpertRequest(Expert expert) {
+	public void setExpertRequest(ExpertRequest expertRequest) {
 		this.expertRequest = expertRequest;
 	}
 
@@ -37,7 +37,7 @@ public class ExpertRequestRegistrationBean {
 		try {
 			entityManager.persist(expertRequest);
 			expertRequestEvent.fire(expertRequest);
-			initNewExpert();
+			initNewExpertRequest();
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -46,8 +46,8 @@ public class ExpertRequestRegistrationBean {
 	}
 
 	@PostConstruct
-	public void initNewExpert() {
-		expertRequest = new Expert();
+	public void initNewExpertRequest() {
+		expertRequest = new ExpertRequest();
 	}
 
 }
