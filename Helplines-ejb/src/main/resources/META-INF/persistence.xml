@@ -11,6 +11,7 @@
 		<class>com.helplines.entities.Role</class>
 		<class>com.helplines.entities.User</class>
 		<class>com.helplines.entities.UserRole</class>
+		<class>com.helplines.entities.Member</class>
 		<properties>
 			<!-- Properties for Hibernate -->
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
