@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" />
+	<title>FlatHost - Responsive Hosting Template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="resources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700"
+		rel="stylesheet" type="text/css" />
+	<link href="resources/css/font-awesome.css" rel="stylesheet" />
+	<link href="resources/css/hosting.css" rel="stylesheet" media="all" />
+
+	<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<script src="resources/js/modernizr.js"></script>
+
+	<link rel="stylesheet" href="resources/css/flexslider.css" />
+	<script src="resources/js/jquery.min.js"></script>
+	<script src="resources/js/jquery.flexslider.js"></script>
+	<script type="text/javascript">
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                useCSS: Modernizr.touch
+            });
+        });
+    </script>
+
+	<script src="resources/js/contact_form.js"></script>
+</h:head>
+<h:body id="home" data-spy="scroll" data-target=".navbar-collapse"
+	data-offset="100">
+
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".navbar-ex1-collapse">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#home"> <img
+				src="resources/images/flathost-logo.png" alt="logo" /></a>
+		</div>
+
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#" role="button" data-toggle="modal"
+					data-target="#Expert">Uzman Kayıt</a></li>
+				<li><a href="#" role="button" data-toggle="modal"
+					data-target="#SignIn">Kayıt</a></li>
+				<li><a href="#" role="button" data-toggle="modal"
+					data-target="#Login" class="btn btn-success">Giriş</a></li>
+			</ul>
+		</div>
+
+	</div>
+	</nav>
+
+	<div class="jumbotron masthead">
+
+		<div class="container">
+			<div class="flexslider">
+				<div class="hero-unit">
+					<p>
+					<h2>7/24 Canlı Programlama Yardımı</h2>
+					</p>
+					<p>
+					<h5>Dakikada 1 dolar ödeyerek, anında nitelikli programlama
+						uzmanı ile görüşün</h5>
+					</p>
+					<br /> <br />
+					<div class="slider-actions text-center">
+						<a href="#" class="btn btn-primary btn-lg">Uzman İste</a>
+					</div>
+					<br />
+					<p>
+					<h5>
+						<a href="#">Nasıl çalıştığını görün</a>
+					</h5>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+
+		<div class="row mainFeatures" id="features">
+			<div class="col-sm-6 col-md-4">
+				<div class="img-thumbnail">
+					<img src="resources/images/secure_img.png" width="85" height="88"
+						alt="secure" />
+					<div class="caption">
+						<h4>Secure _ Reliable</h4>
+
+						<p>Flathost servers are having high physical security and
+							power redundancy Your data will be secure with us.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4">
+				<div class="img-thumbnail">
+					<img src="resources/images/fast_img.png" width="85" height="88"
+						alt="secure" />
+					<div class="caption">
+						<h4>Super Fast</h4>
+
+						<p>With our ultra mordern servers and optical cables, your
+							data will be transfered to end user in milliseconds.</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-0">
+				<div class="img-thumbnail">
+					<img src="resources/images/support_img.png" width="85" height="88"
+						alt="secure" />
+					<div class="caption">
+						<h4>Customer Support</h4>
+
+						<p>We have a dedicated team of support for sales and support
+							to help you in anytime. You can also chat with us.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row PageHead" id="testimonials">
+			<div class="col-md-12">
+				<h3>Size yardım etmek için hazır olan uzmanları bir araya getirdik.</h3>
+			</div>
+		</div>
+		<div class="row Testimonials">
+			<div class="col-sm-5 col-md-3 tm-data">
+				<div class="img-thumbnail">
+					<img src="resources/images/client1.jpg" alt="client" />
+					<div class="caption">
+						<p>Flathost servers are having high physical security and
+							power redundancy Your data will be secure with us.</p>
+						<h5>Batuhan Çıkrıkcı</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-5 col-md-3 tm-data">
+				<div class="img-thumbnail">
+					<img src="resources/images/client1.jpg" alt="client" />
+					<div class="caption">
+						<p>Flathost servers are having high physical security and
+							power redundancy Your data will be secure with us.</p>
+						<h5>Oğuzhan Yurtseven</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-5 col-md-3 tm-data">
+				<div class="img-thumbnail">
+					<img src="resources/images/client1.jpg" alt="client" />
+					<div class="caption">
+						<p>Flathost servers are having high physical security and
+							power redundancy Your data will be secure with us.</p>
+						<h5>Sefa Taftalı</h5>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-5 col-md-3 tm-data">
+				<div class="img-thumbnail">
+					<img src="resources/images/client1.jpg" alt="client" />
+					<div class="caption">
+						<p>Flathost servers are having high physical security and
+							power redundancy Your data will be secure with us.</p>
+						<h5>Oğuzhan Coşkun</h5>
+					</div>
+				</div>
+			</div>			
+		</div>
+
+		<div class="footer">
+			<div class="container">
+				<div class="row footerlinks">
+					<div class="col-sm-4 col-md-2"></div>
+					<div class="col-sm-4 col-md-2"></div>
+					<div class="col-sm-4 col-md-2">
+						<p>Takip Edin</p>
+						<ul>
+							<li><a href="#" target="_blank">Twitter</a></li>
+							<li><a href="#" target="_blank">Facebook</a></li>
+							<li><a href="#" target="_blank">Linkedin</a></li>
+						</ul>
+					</div>
+					<div class="col-sm-4 col-md-2">
+						<p>Kurumsal</p>
+						<ul>
+							<li><a href="#">Hakkımızda</a></li>
+							<li><a href="#">Blog</a></li>
+							<li><a href="#">Ekibimiz</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="row copyright">
+					<div class="col-sm-4 col-md-4"></div>
+					<div class="col-sm-4 col-md-5">
+						<p>Tüm Hakları Saklıdır &copy; 2015 - ÖKSÖKÖ</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="modal fade LoginSignup" id="Expert" tabindex="-1"
+			role="dialog" aria-labelledby="LoginLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h3 class="modal-title">Login</h3>
+					</div>
+					<div class="modal-body">
+						<form method="post"
+							action="https://www.yourwebsite.com/client/dologin.php">
+							<div class="form-group">
+								<input class="form-control input-lg" type="text" name="username"
+									size="50" placeholder="Email ID" />
+							</div>
+							<div class="form-group">
+								<input class="form-control input-lg" type="password"
+									name="password" size="20" placeholder="Password" />
+							</div>
+							<div class="form-group">
+								<input type="submit" value="Login to my Account"
+									class="btn btn-success btn-lg" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade LoginSignup" id="SignIn" tabindex="-1"
+			role="dialog" aria-labelledby="LoginLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h3 class="modal-title">Login</h3>
+					</div>
+					<div class="modal-body">
+						<form method="post"
+							action="https://www.yourwebsite.com/client/dologin.php">
+							<div class="form-group">
+								<input class="form-control input-lg" type="text" name="username"
+									size="50" placeholder="Email ID" />
+							</div>
+							<div class="form-group">
+								<input class="form-control input-lg" type="password"
+									name="password" size="20" placeholder="Password" />
+							</div>
+							<div class="form-group">
+								<input type="submit" value="Login to my Account"
+									class="btn btn-success btn-lg" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade LoginSignup" id="Login" tabindex="-1"
+			role="dialog" aria-labelledby="LoginLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h3 class="modal-title">Login</h3>
+					</div>
+					<div class="modal-body">
+						<form method="post"
+							action="https://www.yourwebsite.com/client/dologin.php">
+							<div class="form-group">
+								<input class="form-control input-lg" type="text" name="username"
+									size="50" placeholder="Email ID" />
+							</div>
+							<div class="form-group">
+								<input class="form-control input-lg" type="password"
+									name="password" size="20" placeholder="Password" />
+							</div>
+							<div class="form-group">
+								<input type="submit" value="Login to my Account"
+									class="btn btn-success btn-lg" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<a href="#" class="scrollup">Scroll</a>
+
+	<script src="resources/js/jquery.easing.1.2.js"></script>
+
+	<script src="resources/js/bootstrap.min.js"></script>
+
+	<script>
+    $(function () {
+        $('.nav li a').bind('click', function (event) {
+            var $anchor2 = $(this).parent();
+            var $anchor = $(this);
+            $('.nav  li').removeClass('active');
+            $anchor2.addClass('active');
+
+            $('html, body').stop().animate({
+                scrollTop: $($anchor.attr('href')).offset().top - 80
+            }, 1500, 'easeInOutExpo');
+            event.preventDefault();
+        });
+    });
+</script>
+
+	<script>
+    $(document).ready(function () {
+
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 800) {
+                $('.scrollup').fadeIn();
+            } else {
+                $('.scrollup').fadeOut();
+            }
+        });
+
+        $('.scrollup').click(function () {
+            $("html, body").animate({scrollTop: 0}, 600);
+            return false;
+        });
+
+    });
+</script>
+</h:body>
+</html>
