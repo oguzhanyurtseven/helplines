@@ -2,6 +2,8 @@ package com.helplines.entities;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -19,21 +21,11 @@ public class User extends UserBase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<UserRole> userRoles = new ArrayList<UserRole>();
-
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ExpertRequest> expertRequests = new ArrayList<ExpertRequest>();
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<CreditCard> creditCards = new ArrayList<CreditCard>();
-
-	public List<UserRole> getUserRoles() {
-		return userRoles;
-	}
-
-	public void setUserRoles(List<UserRole> userRoles) {
-		this.userRoles = userRoles;
-	}
+	@ManyToOne
+	@JoinColumn(name = "ROLE_ID")
+	private Role role;
 
 	public List<ExpertRequest> getExpertRequests() {
 		return expertRequests;
@@ -43,12 +35,12 @@ public class User extends UserBase implements Serializable {
 		this.expertRequests = expertRequests;
 	}
 
-	public List<CreditCard> getCreditCards() {
-		return creditCards;
+	public Role getRole() {
+		return role;
 	}
 
-	public void setCreditCards(List<CreditCard> creditCards) {
-		this.creditCards = creditCards;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 }

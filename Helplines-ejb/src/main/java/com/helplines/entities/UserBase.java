@@ -2,12 +2,12 @@ package com.helplines.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -23,41 +23,21 @@ public class UserBase {
 	private Long id;
 
 	@NotNull
-	@Length(max = 10, min = 1)
-	@Column(name = "USER_NAME", length = 10, nullable = false, unique = true)
-	private String userName;
-
 	@Length(max = 50)
 	@Column(name = "FULL_NAME", length = 50)
 	private String fullName;
 
 	@Email
-	@Column(name = "EMAIL")
+	@Length(max = 50)
+	@Column(name = "EMAIL", nullable = false, unique = true, length = 50)
 	private String email;
 
 	@NotNull
 	@Length(max = 40, min = 1)
 	@Column(name = "PASSWORD", length = 40, nullable = false)
-	private Long password;
-
-	@Length(max = 30)
-	@Column(name = "COMPANY_NAME", length = 30)
-	private String company;
-
-	@Enumerated(EnumType.ORDINAL)
-	@Column(name = "COMPANY_TYPE")
-	private CompanyType companyType = CompanyType.None;
+	private String password;
 
 	@NotNull
-	@Length(max = 200)
-	@Column(name = "LANGUAGES", length = 200)
-	private String interestOfLanguages;
-
-	@NotNull
-	@Length(max = 1, min = 1)
-	@Column(name = "EXPERIENCE", length = 1)
-	private Character programmingExperience;
-
 	@Column(name = "ISACTIVE")
 	private Boolean active = Boolean.FALSE;
 
@@ -66,20 +46,16 @@ public class UserBase {
 	@Column(name = "CREDIT")
 	private Credit credit = new Credit();
 
+	@OneToOne
+	@JoinColumn(name = "CARD_ID")
+	private CreditCard creditCard;
+
 	public Long getId() {
 		return id;
 	}
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
 	}
 
 	public String getFullName() {
@@ -98,44 +74,12 @@ public class UserBase {
 		this.email = email;
 	}
 
-	public Long getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(Long password) {
+	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getCompany() {
-		return company;
-	}
-
-	public void setCompany(String company) {
-		this.company = company;
-	}
-
-	public CompanyType getCompanyType() {
-		return companyType;
-	}
-
-	public void setCompanyType(CompanyType companyType) {
-		this.companyType = companyType;
-	}
-
-	public String getInterestOfLanguages() {
-		return interestOfLanguages;
-	}
-
-	public void setInterestOfLanguages(String interestOfLanguages) {
-		this.interestOfLanguages = interestOfLanguages;
-	}
-
-	public Character getProgrammingExperience() {
-		return programmingExperience;
-	}
-
-	public void setProgrammingExperience(Character programmingExperience) {
-		this.programmingExperience = programmingExperience;
 	}
 
 	public Boolean getActive() {
@@ -152,6 +96,14 @@ public class UserBase {
 
 	public void setCredit(Credit credit) {
 		this.credit = credit;
+	}
+
+	public CreditCard getCreditCard() {
+		return creditCard;
+	}
+
+	public void setCreditCard(CreditCard creditCard) {
+		this.creditCard = creditCard;
 	}
 
 }

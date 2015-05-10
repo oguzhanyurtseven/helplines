@@ -54,8 +54,6 @@
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#" role="button" data-toggle="modal"
-					data-target="#Expert">Uzman Kayıt</a></li>
-				<li><a href="#" role="button" data-toggle="modal"
 					data-target="#SignIn">Kayıt</a></li>
 				<li><a href="#" role="button" data-toggle="modal"
 					data-target="#Login" class="btn btn-success">Giriş</a></li>
@@ -71,11 +69,11 @@
 			<div class="flexslider">
 				<div class="hero-unit">
 					<p>
-					<h2>7/24 Canlı Programlama Yardımı</h2>
+						<h2>7/24 Canlı Programlama Yardımı</h2>
 					</p>
 					<p>
-					<h5>Dakikada 1 dolar ödeyerek, anında nitelikli programlama
-						uzmanı ile görüşün</h5>
+						<h5>Dakikada 1 dolar ödeyerek, anında nitelikli programlama
+							uzmanı ile görüşün</h5>
 					</p>
 					<br /> <br />
 					<div class="slider-actions text-center">
@@ -83,9 +81,9 @@
 					</div>
 					<br />
 					<p>
-					<h5>
-						<a href="#">Nasıl çalıştığını görün</a>
-					</h5>
+						<h5>
+							<a href="#">Nasıl çalıştığını görün</a>
+						</h5>
 					</p>
 				</div>
 			</div>
@@ -135,7 +133,8 @@
 
 		<div class="row PageHead" id="testimonials">
 			<div class="col-md-12">
-				<h3>Size yardım etmek için hazır olan uzmanları bir araya getirdik.</h3>
+				<h3>Size yardım etmek için hazır olan uzmanları bir araya
+					getirdik.</h3>
 			</div>
 		</div>
 		<div class="row Testimonials">
@@ -178,7 +177,7 @@
 						<h5>Oğuzhan Coşkun</h5>
 					</div>
 				</div>
-			</div>			
+			</div>
 		</div>
 
 		<div class="footer">
@@ -212,37 +211,6 @@
 			</div>
 		</div>
 
-
-		<div class="modal fade LoginSignup" id="Expert" tabindex="-1"
-			role="dialog" aria-labelledby="LoginLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-						<h3 class="modal-title">Login</h3>
-					</div>
-					<div class="modal-body">
-						<form method="post"
-							action="https://www.yourwebsite.com/client/dologin.php">
-							<div class="form-group">
-								<input class="form-control input-lg" type="text" name="username"
-									size="50" placeholder="Email ID" />
-							</div>
-							<div class="form-group">
-								<input class="form-control input-lg" type="password"
-									name="password" size="20" placeholder="Password" />
-							</div>
-							<div class="form-group">
-								<input type="submit" value="Login to my Account"
-									class="btn btn-success btn-lg" />
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-
 		<div class="modal fade LoginSignup" id="SignIn" tabindex="-1"
 			role="dialog" aria-labelledby="LoginLabel" aria-hidden="true">
 			<div class="modal-dialog">
@@ -250,24 +218,30 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">&times;</button>
-						<h3 class="modal-title">Login</h3>
+						<h3 class="modal-title">Kayıt Ol</h3>
 					</div>
 					<div class="modal-body">
-						<form method="post"
-							action="https://www.yourwebsite.com/client/dologin.php">
+						<h:form id="rg-form">
 							<div class="form-group">
-								<input class="form-control input-lg" type="text" name="username"
-									size="50" placeholder="Email ID" />
+								<p>İsim:</p>
+								<h:inputText id="rg-name" styleClass="form-control input-lg" value="#{user.fullName}" />
 							</div>
+
 							<div class="form-group">
-								<input class="form-control input-lg" type="password"
-									name="password" size="20" placeholder="Password" />
+								<p>Email:</p>
+								<h:inputText id="rg-email" styleClass="form-control input-lg" value="#{user.email}" />
 							</div>
+
 							<div class="form-group">
-								<input type="submit" value="Login to my Account"
-									class="btn btn-success btn-lg" />
+								<p>Parola:</p>
+								<h:inputSecret id="rg-pass" styleClass="form-control input-lg" value="#{user.password}" />
 							</div>
-						</form>
+
+							<div class="form-group">
+								<h:commandButton id="rg-command"
+									styleClass="btn btn-success btn-lg" value="Kayıt" action="#{userRegistrationBean.registerUser()}" />
+							</div>
+						</h:form>
 					</div>
 				</div>
 			</div>
@@ -280,24 +254,25 @@
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal"
 							aria-hidden="true">&times;</button>
-						<h3 class="modal-title">Login</h3>
+						<h3 class="modal-title">Giriş</h3>
 					</div>
 					<div class="modal-body">
-						<form method="post"
-							action="https://www.yourwebsite.com/client/dologin.php">
+						<h:form id="lg-form">
 							<div class="form-group">
-								<input class="form-control input-lg" type="text" name="username"
-									size="50" placeholder="Email ID" />
+								<p>Email:</p>
+								<h:inputText id="lg-email" styleClass="form-control input-lg" />
 							</div>
+
 							<div class="form-group">
-								<input class="form-control input-lg" type="password"
-									name="password" size="20" placeholder="Password" />
+								<p>Parola:</p>
+								<h:inputSecret id="lg-password" styleClass="form-control input-lg" />
 							</div>
+
 							<div class="form-group">
-								<input type="submit" value="Login to my Account"
-									class="btn btn-success btn-lg" />
+								<h:commandButton id="lg-command"
+									styleClass="btn btn-success btn-lg" value="Giriş" />
 							</div>
-						</form>
+						</h:form>
 					</div>
 				</div>
 			</div>

@@ -9,11 +9,16 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 
+import com.helplines.entities.Role;
 import com.helplines.entities.User;
+import com.helplines.util.HashingBean;
 
 @Model
 @Stateful
 public class UserRegistrationBean {
+
+	@Inject
+	HashingBean hashingBean;
 
 	@Inject
 	private EntityManager entityManager;
@@ -34,13 +39,16 @@ public class UserRegistrationBean {
 	}
 
 	public void registerUser() {
+		user.setRole(entityManager.find(Role.class, Long.valueOf(1)));
+		user.setActive(false);
+		user.setPassword(hashingBean.Hashing(user.getPassword()));
 		try {
 			entityManager.persist(user);
 			userEvent.fire(user);
 			initNewUser();
 
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 

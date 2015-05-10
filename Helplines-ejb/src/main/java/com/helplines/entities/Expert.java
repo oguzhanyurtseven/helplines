@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,22 +24,6 @@ public class Expert extends UserBase implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Email
-	@Column(name = "GOOGLE")
-	private String googleMail;
-
-	@Length(max = 200)
-	@Column(name = "LINKEDIN", length = 200)
-	private String linkedin;
-
-	@Length(max = 200)
-	@Column(name = "SOFLOW", length = 200)
-	private String stackOverFlow;
-
-	@Length(max = 200)
-	@Column(name = "PROFILE", length = 200)
-	private String helpLinesProfile;
-
 	@Length(max = 200)
 	@Column(name = "BIOGRAPHY", length = 200)
 	private String biography;
@@ -47,45 +33,11 @@ public class Expert extends UserBase implements Serializable {
 	private String paypalMail;
 
 	@OneToMany(mappedBy = "expert", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<UserRole> userRoles = new ArrayList<UserRole>();
-
-	@OneToMany(mappedBy = "expert", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<ExpertRequest> expertRequests = new ArrayList<ExpertRequest>();
 
-	@OneToMany(mappedBy = "expert", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<CreditCard> creditCards = new ArrayList<CreditCard>();
-
-	public String getGoogleMail() {
-		return googleMail;
-	}
-
-	public void setGoogleMail(String googleMail) {
-		this.googleMail = googleMail;
-	}
-
-	public String getLinkedin() {
-		return linkedin;
-	}
-
-	public void setLinkedin(String linkedin) {
-		this.linkedin = linkedin;
-	}
-
-	public String getStackOverFlow() {
-		return stackOverFlow;
-	}
-
-	public void setStackOverFlow(String stackOverFlow) {
-		this.stackOverFlow = stackOverFlow;
-	}
-
-	public String getHelpLinesProfile() {
-		return helpLinesProfile;
-	}
-
-	public void setHelpLinesProfile(String helpLinesProfile) {
-		this.helpLinesProfile = helpLinesProfile;
-	}
+	@ManyToOne
+	@JoinColumn(name = "ROLE_ID")
+	private Role role;
 
 	public String getBiography() {
 		return biography;
@@ -103,14 +55,6 @@ public class Expert extends UserBase implements Serializable {
 		this.paypalMail = paypalMail;
 	}
 
-	public List<UserRole> getUserRoles() {
-		return userRoles;
-	}
-
-	public void setUserRoles(List<UserRole> userRoles) {
-		this.userRoles = userRoles;
-	}
-
 	public List<ExpertRequest> getExpertRequests() {
 		return expertRequests;
 	}
@@ -119,12 +63,12 @@ public class Expert extends UserBase implements Serializable {
 		this.expertRequests = expertRequests;
 	}
 
-	public List<CreditCard> getCreditCards() {
-		return creditCards;
+	public Role getRole() {
+		return role;
 	}
 
-	public void setCreditCards(List<CreditCard> creditCards) {
-		this.creditCards = creditCards;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 }

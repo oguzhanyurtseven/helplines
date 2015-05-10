@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -36,14 +34,6 @@ public class CreditCard extends AuditBase implements Serializable {
 	@Column(name = "DESCRIPTION", length = 100)
 	private String description;
 
-	@ManyToOne
-	@JoinColumn(name = "USER_ID")
-	private User user;
-
-	@ManyToOne
-	@JoinColumn(name = "EXPERT_ID")
-	private Expert expert;
-
 	public Long getId() {
 		return id;
 	}
@@ -66,22 +56,6 @@ public class CreditCard extends AuditBase implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public Expert getExpert() {
-		return expert;
-	}
-
-	public void setExpert(Expert expert) {
-		this.expert = expert;
 	}
 
 }

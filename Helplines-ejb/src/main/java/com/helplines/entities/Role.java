@@ -39,7 +39,10 @@ public class Role implements Serializable {
 	private String info;
 
 	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<RolePermission> rolePermissions = new ArrayList<RolePermission>();
+	private List<Expert> experts = new ArrayList<Expert>();
+
+	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<User> users = new ArrayList<User>();
 
 	public Long getId() {
 		return id;
@@ -65,11 +68,20 @@ public class Role implements Serializable {
 		this.info = info;
 	}
 
-	public List<RolePermission> getRolePermissions() {
-		return rolePermissions;
+	public List<Expert> getExperts() {
+		return experts;
 	}
 
-	public void setRolePermissions(List<RolePermission> rolePermissions) {
-		this.rolePermissions = rolePermissions;
+	public void setExperts(List<Expert> experts) {
+		this.experts = experts;
 	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
 }
