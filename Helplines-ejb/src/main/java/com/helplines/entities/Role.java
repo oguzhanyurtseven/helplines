@@ -39,9 +39,6 @@ public class Role implements Serializable {
 	private String info;
 
 	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Expert> experts = new ArrayList<Expert>();
-
-	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<User> users = new ArrayList<User>();
 
 	public Long getId() {
@@ -66,14 +63,6 @@ public class Role implements Serializable {
 
 	public void setInfo(String info) {
 		this.info = info;
-	}
-
-	public List<Expert> getExperts() {
-		return experts;
-	}
-
-	public void setExperts(List<Expert> experts) {
-		this.experts = experts;
 	}
 
 	public List<User> getUsers() {

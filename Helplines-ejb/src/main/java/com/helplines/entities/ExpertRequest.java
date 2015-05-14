@@ -47,10 +47,6 @@ public class ExpertRequest extends AuditBase implements Serializable {
 	@JoinColumn(name = "USER_ID")
 	private User user;
 
-	@ManyToOne
-	@JoinColumn(name = "EXPERT_ID")
-	private Expert expert;
-
 	public Long getId() {
 		return id;
 	}
@@ -89,14 +85,6 @@ public class ExpertRequest extends AuditBase implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
-	public Expert getExpert() {
-		return expert;
-	}
-
-	public void setExpert(Expert expert) {
-		this.expert = expert;
 	}
 
 }

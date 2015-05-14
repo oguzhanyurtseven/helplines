@@ -224,22 +224,23 @@
 						<h:form id="rg-form">
 							<div class="form-group">
 								<p>İsim:</p>
-								<h:inputText id="rg-name" styleClass="form-control input-lg" value="#{user.fullName}" />
+								<h:inputText id="rg-name" styleClass="form-control input-lg"
+									value="#{user.fullName}" />
 							</div>
-
 							<div class="form-group">
 								<p>Email:</p>
-								<h:inputText id="rg-email" styleClass="form-control input-lg" value="#{user.email}" />
+								<h:inputText id="rg-email" styleClass="form-control input-lg"
+									value="#{user.email}" />
 							</div>
-
 							<div class="form-group">
 								<p>Parola:</p>
-								<h:inputSecret id="rg-pass" styleClass="form-control input-lg" value="#{user.password}" />
+								<h:inputSecret id="rg-pass" styleClass="form-control input-lg"
+									value="#{user.password}" />
 							</div>
-
 							<div class="form-group">
 								<h:commandButton id="rg-command"
-									styleClass="btn btn-success btn-lg" value="Kayıt" action="#{userRegistrationBean.registerUser()}" />
+									styleClass="btn btn-success btn-lg" value="Kayıt"
+									action="#{userRegistrationBean.registerUser()}" />
 							</div>
 						</h:form>
 					</div>
@@ -260,17 +261,21 @@
 						<h:form id="lg-form">
 							<div class="form-group">
 								<p>Email:</p>
-								<h:inputText id="lg-email" styleClass="form-control input-lg" />
+								<h:inputText id="lg-email" styleClass="form-control input-lg"
+									value="#{userSession.user.email}" />
 							</div>
 
 							<div class="form-group">
 								<p>Parola:</p>
-								<h:inputSecret id="lg-password" styleClass="form-control input-lg" />
+								<h:inputSecret id="lg-password"
+									styleClass="form-control input-lg"
+									value="#{userSession.user.password}" />
 							</div>
 
 							<div class="form-group">
 								<h:commandButton id="lg-command"
-									styleClass="btn btn-success btn-lg" value="Giriş" />
+									styleClass="btn btn-success btn-lg" value="Giriş"
+									action="#{userSession.login()}" />
 							</div>
 						</h:form>
 					</div>

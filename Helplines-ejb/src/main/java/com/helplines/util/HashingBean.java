@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class HashingBean {
 
-	public String Hashing(String password) {
+	public String hashString(String password) {
 		try {
 			MessageDigest messageDigest = MessageDigest.getInstance("MD5");
 			byte[] md = messageDigest.digest(password.getBytes());

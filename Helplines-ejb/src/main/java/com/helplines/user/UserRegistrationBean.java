@@ -41,14 +41,14 @@ public class UserRegistrationBean {
 	public void registerUser() {
 		user.setRole(entityManager.find(Role.class, Long.valueOf(1)));
 		user.setActive(false);
-		user.setPassword(hashingBean.Hashing(user.getPassword()));
+		user.setPassword(hashingBean.hashString(user.getPassword()));
 		try {
 			entityManager.persist(user);
 			userEvent.fire(user);
 			initNewUser();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.err.println(e.getMessage());
 		}
 	}
 
