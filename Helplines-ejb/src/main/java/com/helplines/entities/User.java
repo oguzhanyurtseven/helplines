@@ -4,6 +4,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -68,12 +70,19 @@ public class User implements Serializable {
 	@Column(name = "BIOGRAPHY", length = 200)
 	private String biography;
 
+	@Enumerated(EnumType.ORDINAL)
+	@Column(name = "CATEGORY")
+	private Category category = Category.none;
+
 	@Email
 	@Column(name = "PAYPAL")
 	private String paypalMail;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<ExpertRequest> expertRequests = new ArrayList<ExpertRequest>();
+	private List<ExpertRequest> expertRequestsUser = new ArrayList<ExpertRequest>();
+
+	@OneToMany(mappedBy = "expert", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ExpertRequest> expertRequestsExpert = new ArrayList<ExpertRequest>();
 
 	@ManyToOne
 	@JoinColumn(name = "ROLE_ID")
@@ -143,6 +152,14 @@ public class User implements Serializable {
 		this.biography = biography;
 	}
 
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
 	public String getPaypalMail() {
 		return paypalMail;
 	}
@@ -151,12 +168,20 @@ public class User implements Serializable {
 		this.paypalMail = paypalMail;
 	}
 
-	public List<ExpertRequest> getExpertRequests() {
-		return expertRequests;
+	public List<ExpertRequest> getExpertRequestsUser() {
+		return expertRequestsUser;
 	}
 
-	public void setExpertRequests(List<ExpertRequest> expertRequests) {
-		this.expertRequests = expertRequests;
+	public void setExpertRequestsUser(List<ExpertRequest> expertRequestsUser) {
+		this.expertRequestsUser = expertRequestsUser;
+	}
+
+	public List<ExpertRequest> getExpertRequestsExpert() {
+		return expertRequestsExpert;
+	}
+
+	public void setExpertRequestsExpert(List<ExpertRequest> expertRequestsExpert) {
+		this.expertRequestsExpert = expertRequestsExpert;
 	}
 
 	public Role getRole() {
