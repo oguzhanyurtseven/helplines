@@ -26,6 +26,9 @@ public class UserSession implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
+	SessionListener sessionListener;
+
+	@Inject
 	UserListProducer userListProducer;
 
 	HashingBean hashingBean = new HashingBean();
@@ -43,7 +46,7 @@ public class UserSession implements Serializable {
 
 	protected boolean result() {
 		boolean result = false;
-		for (int i = 0; i < userListProducer.getUsers().size();) {
+		for (int i = 0; i < userListProducer.getUsers().size(); i++) {
 			if (user.getEmail().equals(
 					userListProducer.getUsers().get(i).getEmail())
 					&& hashingBean.hashString(user.getPassword()).equals(
@@ -53,8 +56,6 @@ public class UserSession implements Serializable {
 				break;
 			} else {
 				result = false;
-				initNewUser();
-				break;
 			}
 		}
 		return result;
@@ -64,6 +65,7 @@ public class UserSession implements Serializable {
 		if (result()) {
 			HttpSession session = Session.getSession();
 			session.setAttribute("user", user);
+			sessionListener.addUser(user);
 			return "/success.xhtml";
 
 		} else {
@@ -79,6 +81,8 @@ public class UserSession implements Serializable {
 	public String logout() {
 		HttpSession session = Session.getSession();
 		session.invalidate();
+		sessionListener.deleteUser(user);
+		initNewUser();
 		return "/index.xhtml";
 	}
 
