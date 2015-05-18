@@ -40,7 +40,6 @@ public class UserRegistrationBean {
 
 	public void registerUser() {
 		user.setRole(entityManager.find(Role.class, Long.valueOf(1)));
-		user.setActive(false);
 		user.setPassword(hashingBean.hashString(user.getPassword()));
 		try {
 			entityManager.persist(user);

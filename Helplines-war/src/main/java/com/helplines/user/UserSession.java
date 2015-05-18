@@ -25,6 +25,13 @@ public class UserSession implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	boolean LOGGED_IN = false;
+
+	@Named
+	public boolean isLOGGED_IN() {
+		return LOGGED_IN;
+	}
+
 	@Inject
 	SessionListener sessionListener;
 
@@ -66,8 +73,8 @@ public class UserSession implements Serializable {
 			HttpSession session = Session.getSession();
 			session.setAttribute("user", user);
 			sessionListener.addUser(user);
-			return "/success.xhtml";
-
+			LOGGED_IN = true;
+			return "/index.xhtml";
 		} else {
 			FacesContext.getCurrentInstance().addMessage(
 					null,
@@ -83,6 +90,7 @@ public class UserSession implements Serializable {
 		session.invalidate();
 		sessionListener.deleteUser(user);
 		initNewUser();
+		LOGGED_IN = false;
 		return "/index.xhtml";
 	}
 

@@ -34,7 +34,6 @@ public class AuthenticationFilter implements Filter {
 					|| (ses != null && ses.getAttribute("user") != null))
 				chain.doFilter(request, response);
 			else
-
 				res.sendRedirect(req.getContextPath() + "/index.xhtml");
 
 		} catch (Exception e) {

@@ -53,10 +53,6 @@ public class User implements Serializable {
 	@Column(name = "PASSWORD", length = 40, nullable = false)
 	private String password;
 
-	@NotNull
-	@Column(name = "ISACTIVE")
-	private Boolean active = Boolean.FALSE;
-
 	@Valid
 	@Embedded
 	@Column(name = "CREDIT")
@@ -118,14 +114,6 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public Boolean getActive() {
-		return active;
-	}
-
-	public void setActive(Boolean active) {
-		this.active = active;
 	}
 
 	public Credit getCredit() {
