@@ -51,6 +51,11 @@ public class ExpertRequest extends AuditBase implements Serializable {
 	@JoinColumn(name = "EXPERT_ID")
 	private User expert;
 
+	@Column(name = "ISACTIVE")
+	private Boolean active = Boolean.FALSE;
+
+	private String reqLink;
+
 	public Long getId() {
 		return id;
 	}
@@ -97,6 +102,22 @@ public class ExpertRequest extends AuditBase implements Serializable {
 
 	public void setExpert(User expert) {
 		this.expert = expert;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	public String getReqLink() {
+		return reqLink;
+	}
+
+	public void setReqLink(String reqLink) {
+		this.reqLink = reqLink;
 	}
 
 }

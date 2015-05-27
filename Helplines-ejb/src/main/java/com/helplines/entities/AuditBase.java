@@ -7,8 +7,6 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.validator.constraints.Length;
-
 @MappedSuperclass
 public class AuditBase {
 
@@ -20,12 +18,10 @@ public class AuditBase {
 	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date updateDate;
 
-	@Column(name = "CREATE_USER", length = 10)
-	@Length(max = 10)
+	@Column(name = "CREATE_USER")
 	private String createUser;
 
-	@Column(name = "UPDATE_USER", length = 10)
-	@Length(max = 10)
+	@Column(name = "UPDATE_USER")
 	private String updateUser;
 
 	public Date getCreateDate() {

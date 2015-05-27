@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<style type="text/css">
+.ui-widget, .ui-widget .ui-widget {
+	font-size: 13px !important;
+}
+</style>
+</h:head>
+<h:body>
+
+	<div style="width: 350px; margin: 0 auto;">
+
+		<h:form id="menubar">
+			<p:menubar>
+				<p:menuitem value="Geri" url="/" icon="ui-icon-close" />
+
+				<f:facet name="options">
+					<p:outputLabel style="margin-right:25px"
+						value="Kredi: #{userSession.user.credit.credit} $" />
+					<p:outputLabel style="margin-right:10px"
+						value="#{userSession.user.fullName}" />
+					<p:commandButton value="Çıkış" icon="ui-icon-extlink"
+						action="#{userSession.logout()}" />
+				</f:facet>
+			</p:menubar>
+		</h:form>
+
+		<h:form id="ex-request">
+			<h:panelGrid columns="1">
+
+				<p:outputLabel value="PayPal Email: " />
+				<p:inputText
+					value="#{expertRegistration.user.paypalMail}"
+					style="width:335px;" />
+
+				<p:outputLabel value="Biografi: " />
+				<p:inputTextarea value="#{expertRegistration.user.biography}"
+					rows="10" cols="45" />
+
+				<p:outputLabel value="Kategori: " />
+				<p:selectOneMenu value="#{expertRegistration.categoryName}"
+					style="width:350px;">
+					<f:selectItem itemLabel="Java ve JavaEE" itemValue="Java_JavaEE" />
+					<f:selectItem itemLabel="Java Script" itemValue="JavaScript" />
+					<f:selectItem itemLabel="HTML" itemValue="HTML" />
+					<f:selectItem itemLabel="Ruby ve Rails" itemValue="Ruby_Rails" />
+					<f:selectItem itemLabel="Python ve Django"
+						itemValue="Python_Django" />
+					<f:selectItem itemLabel="PHP" itemValue="PHP" />
+					<f:selectItem itemLabel="Objective C" itemValue="Objective_C" />
+					<f:selectItem itemLabel="C#.Net" itemValue="dotNet" />
+					<f:selectItem itemLabel="Go" itemValue="Go" />
+					<f:selectItem itemLabel="C/C++" itemValue="C" />
+					<f:selectItem itemLabel="Android" itemValue="Android" />
+					<f:selectItem itemLabel="CoffeScript" itemValue="CoffeScript" />
+					<f:selectItem itemLabel="Git" itemValue="Git" />
+					<f:selectItem itemLabel="SQL" itemValue="SQL" />
+					<f:selectItem itemLabel="NoSQL" itemValue="NoSQL" />
+					<f:selectItem itemLabel="NodeJS" itemValue="NodeJS" />
+					<f:selectItem itemLabel="AngularJS" itemValue="AngularJS" />
+					<f:selectItem itemLabel="Perl" itemValue="Perl" />
+					<f:selectItem itemLabel="Scala" itemValue="Scala" />
+					<f:selectItem itemLabel="Clojure" itemValue="Clojure" />
+					<f:selectItem itemLabel="Haskell" itemValue="Haskell" />
+					<f:selectItem itemLabel="Lua" itemValue="Lua" />
+					<f:selectItem itemLabel="MeteorJS" itemValue="MeteorJS" />
+					<f:selectItem itemLabel="MATLAB" itemValue="MATLAB" />
+				</p:selectOneMenu>
+
+				<p:commandButton value="Kaydet"
+					action="#{expertRegistration.updateUser()}" />
+			</h:panelGrid>
+		</h:form>
+	</div>
+
+</h:body>
+</html>

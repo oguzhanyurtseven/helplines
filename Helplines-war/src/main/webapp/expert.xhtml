@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<style type="text/css">
+.ui-widget, .ui-widget .ui-widget {
+	font-size: 13px !important;
+}
+</style>
+</h:head>
+<h:body>
+
+	<div style="width: 500px; margin: 0 auto;">
+
+		<h:form id="menubar">
+			<p:menubar>
+				<p:menuitem value="Geri" url="/" icon="ui-icon-close" />
+				<f:facet name="options">
+					<p:outputLabel style="margin-right:25px"
+						value="Kredi: #{userSession.user.credit.credit} $" />
+					<p:outputLabel style="margin-right:10px"
+						value="#{userSession.user.fullName}" />
+					<p:commandButton value="Çıkış" icon="ui-icon-extlink"
+						action="#{userSession.logout()}" />
+				</f:facet>
+			</p:menubar>
+		</h:form>
+
+
+		<h:form id="online_req">
+			<p:poll interval="5"
+				listener="#{expertRequestProducer.retrieveAllExpertRequest()}"
+				update="experts" />
+			<p:dataGrid var="_expertRequests" value="#{expertRequests}"
+				columns="4" layout="grid" rows="6" paginator="true" id="experts"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+
+				<f:facet name="header">
+          			Açık İstekler
+        		</f:facet>
+
+				<p:panel header="#{_expertRequests.user.fullName}"
+					style="text-align:center">
+					<h:panelGrid columns="1" style="width:100%">
+						<p:inputTextarea value="#{_expertRequests.description}"
+							readonly="true" cols="6" />
+					</h:panelGrid>
+				</p:panel>
+
+				<p:commandLink action="#{expertRequestUpdate.expertConnect()}"
+					title="Başlat">
+					<h:outputText styleClass="ui-icon ui-icon-search"
+						style="margin:0 auto;" />
+					<f:setPropertyActionListener value="#{_expertRequests}"
+						target="#{expertRequestUpdate.expertRequest}" />
+				</p:commandLink>
+			</p:dataGrid>
+		</h:form>
+	</div>
+
+</h:body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<meta charset="utf-8" />
+<!-- Firebase -->
+<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- CodeMirror -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/codemirror.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.2.0/codemirror.css" />
+
+<!-- Firepad -->
+<link rel="stylesheet"
+	href="https://cdn.firebase.com/libs/firepad/1.1.0/firepad.css" />
+<script src="https://cdn.firebase.com/libs/firepad/1.1.0/firepad.min.js"></script>
+
+<style>
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	height: 100%;
+	position: relative;
+}
+/* Height / width / positioning can be customized for your use case.
+         For demo purposes, we make firepad fill the entire browser. */
+#firepad-container {
+	width: 70%;
+	height: 100%;
+	float: left;
+}
+</style>
+
+</head>
+<h:body>
+
+
+
+	<div id="firepad-container"></div>
+	<div id='myPublisherDiv'></div>
+	<div id='subscribersDiv'></div>
+
+	<script src='//static.opentok.com/v2/js/opentok.min.js'></script>
+	<script> 
+      var apiKey = '45229442';
+      var sessionId = '1_MX40NTIyOTQ0Mn5-MTQzMjY2MDEwMjA4NH5CbXZ2MTIxaC9DY2RHdEc4YkxQaEEzMWV-fg'; 
+      var token = 'T1==cGFydG5lcl9pZD00NTIyOTQ0MiZzaWc9NjliZjhhMDZhMGM2MzVlMThmN2JiMmE0MWZkZmFiYjQ3MTIzM2I3YTpyb2xlPXB1Ymxpc2hlciZzZXNzaW9uX2lkPTFfTVg0ME5USXlPVFEwTW41LU1UUXpNalkyTURFd01qQTROSDVDYlhaMk1USXhhQzlEWTJSSGRFYzRZa3hRYUVFek1XVi1mZyZjcmVhdGVfdGltZT0xNDMyNjYwMTA3Jm5vbmNlPTAuMzY4MjE4OTE2NTEyOTMwOSZleHBpcmVfdGltZT0xNDM1MjUyMDU5JmNvbm5lY3Rpb25fZGF0YT0=';
+      var session = OT.initSession(apiKey, sessionId); 
+      session.on({ 
+          streamCreated: function(event) { 
+            session.subscribe(event.stream, 'subscribersDiv', {insertMode: 'append'}); 
+          } 
+      }); 
+      session.connect(token, function(error) {
+        if (error) {
+          console.log(error.message);
+        } else {
+          session.publish('myPublisherDiv', {width: 320, height: 240}); 
+        }
+      });
+    </script>
+
+	<script>
+    function init() {
+      var firepadRef = getExampleRef();
+       var codeMirror = CodeMirror(document.getElementById('firepad-container'), { lineWrapping: true });
+   var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror,
+          { richTextToolbar: true, richTextShortcuts: true });
+     firepad.on('ready', function() {
+        if (firepad.isHistoryEmpty()) {
+          firepad.setHtml('<span style="font-size: 24px;">Rich-text editing with <span style="color: red">Firepad!</span></span><br/><br/>Collaborative-editing made easy.\n');
+        }
+      });
+
+var locacion = window.location.toString();
+
+$.get('/helplines/ConversationService', {data : locacion}, function() {});
+
+     
+    }
+    function getExampleRef() {
+      var ref = new Firebase('https://firepad.firebaseio-demo.com');
+      var hash = window.location.hash.replace(/#/g, '');
+      if (hash) {
+        ref = ref.child(hash);
+      } else {
+        ref = ref.push(); // generate unique location.
+        window.location = window.location + '#' + ref.key(); // add it as a hash to the URL.
+      }
+      return ref;
+    }
+    init();
+  </script>
+</h:body>
+</html>
